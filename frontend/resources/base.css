@@ -1,5 +1,7 @@
-html, body {
-    height: 100vh;
+html,body{height:100%;}
+
+* {
+    box-sizing: border-box;
 }
 
 textarea,
@@ -32,6 +34,11 @@ body, body::backdrop, body:fullscreen {
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+
+.full-height {
+    display: flex;
+    flex-direction: column;
 }
 
 footer {
