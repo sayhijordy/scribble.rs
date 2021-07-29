@@ -1,21 +1,33 @@
 .center-container {
+    background: antiquewhite;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 1rem 0;
 }
 
 .content-container {
+    width: 100%;
     display: block;
     background-color: rgb(250, 192, 202);
-    padding: 1rem 3rem 1rem 3rem;
+    /* margin: 2rem 0; */
+    padding: 0 1rem;
 }
 
 .input-item {
     width: inherit;
-    min-width: 300px;
+    min-width: 100%;
+}
+
+.input-container {
+    justify-content: center;
+    align-items: center;
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    column-gap: 20px;
+    row-gap: 10px;
 }
 
 .error-list {
@@ -32,62 +44,90 @@
 .tab-header {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin: 0 1rem 0 1rem;
+    margin: 0 1rem;
 }
 
-.tab-label {
-    background-color: rgb(236, 234, 234);
-    border-bottom: 0.3rem solid #cac5c5;
+.tab-label#join {
+    background-color: rgb(179, 224, 241);
+    border-right: 0.3rem solid rgb(102, 102, 212);
+    border-top: 0.3rem solid rgb(102, 102, 212);
     outline: none;
     cursor: pointer;
     padding: 1rem;
+    text-align: center;
+}
+
+.tab-label#create {
+    background-color: rgb(179, 224, 241);
+    border-left: 0.3rem solid rgb(102, 102, 212);
+    border-top: 0.3rem solid rgb(102, 102, 212);
+    outline: none;
+    cursor: pointer;
+    padding: 1rem;
+    text-align: center;
 }
 
 .tab-button:checked + .tab-label {
-    background-color: rgb(179, 224, 241);
-    border-bottom: 0.3rem solid rgb(102, 102, 212);
-    padding: 1rem;
+    background-color: rgb(248, 148, 164) !important;
 }
 
 .tab-content {
     flex-direction: column;
     display: none;
-    border: none;
+    border-left: 0.3rem solid rgb(102, 102, 212);
+    border-right: 0.3rem solid rgb(102, 102, 212);
     background-color: white;
     flex: 1 1;
-    margin: 0 1rem 1rem 1rem;
-    padding: 1rem;
+    margin: 0 1rem;
     overflow: auto;
 }
 
 /* display: block causes the element to be visible, since the default value is none */
 #create-lobby {
     display: block;
+    overflow: hidden;
+    background: rgb(250, 192, 202);
+    height: 100%;
 }
 
 .join-lobby-data {
-    display: flex;
+    background: rgb(250, 192, 202);
+    overflow: scroll;
+    display: inline-grid;
     flex-direction: row;
     flex: 1;
     height: 100%;
 }
 
 .table-wrapper-wrapper {
+    height: 200px;
+    font-size: 14px;
     display: flex;
     flex-direction: column;
     flex: 3;
     margin: 1rem;
-    overflow: hidden;
+    overflow: scroll;
+    background: rgb(255,255,255,0.3);
 }
 
 .table-wrapper {
+    max-height: 200px;
+    overflow: scroll;
+    padding: 10px 10px 0px 10px;
+    border: 1px solid #000;
     flex: 1;
-    border: 1px solid slategray;
-    overflow-y: scroll;
+}
+
+button#refresh-button {
+    background: #FFF;
+    border: none;
+    align-content: center;
+    padding: 1rem 0 1rem 0;
 }
 
 #refresh-button {
-    margin-bottom: 0.5rem;
+    background: #FFF;
+    margin: 0 1rem 0.5rem 1rem;
 }
 
 #lobby-table {
@@ -96,14 +136,14 @@
 
 .lobby-details {
     display: grid;
-    grid-template-columns: max-content auto;
+    /* grid-template-columns: max-content auto; */
     grid-template-rows: min-content min-content min-content min-content min-content min-content min-content minmax(min-content,4rem);
-    column-gap: 2rem;
-    row-gap: 1rem;
+    /* column-gap: 2rem; */
+    row-gap: 0.5rem;
     flex: 2;
     margin: 1rem;
     padding: 1rem;
-    background-color: rgb(226, 226, 226);
+    background-color: rgb(255,255,255,0.3);
     overflow: auto;
 }
 
@@ -117,19 +157,21 @@ table {
 }
 
 td, th {
-    text-align: left;
-    padding: 0 5px 0 5px;
-}
-
-th {
-    background-color: white;
-    position: sticky;
-    top: 0;
+    text-align: center;
     padding: 0.2rem;
 }
 
+th {
+    background-color: rgb(250, 192, 202);
+    position: sticky;
+    top: 0;
+    /* padding: 0.2rem 2.4rem 0.6rem 0; */
+    text-align: center;
+    font-size: 15px;
+}
+
 tr:nth-child(2n) {
-    background-color: rgb(219, 219, 219);
+    background-color: rgb(179, 224, 241);
 }
 
 tr:hover {
@@ -141,10 +183,39 @@ tr:hover {
 }
 
 #join-button {
+    background: #FFF;
+    border: none;
+    align-content: center;
+    padding: 1rem 0 1rem 0;
+    margin-top: 0.3rem;
+    height: 65px;
     grid-column-start: 1;
     grid-column-end: 3;
 }
 
 tr[selected="true"] {
     background-color: #6464de;
+}
+
+h1.title {
+    padding-top: 1rem;
+    margin: 0 0 1rem 0;
+    font-size: 4rem;
+}
+
+
+th {
+    position: sticky;
+}
+
+/*@media screen and (max-width: 600px) {
+   For mobile phones: 
+  .table-wrapper-wrapper {
+        font-size: 8px;
+    }
+}*/
+
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
 }

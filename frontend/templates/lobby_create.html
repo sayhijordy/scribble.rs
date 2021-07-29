@@ -4,7 +4,12 @@
 
 <head>
     <title>Scribble.rs</title>
-    <meta charset="UTF-8"/>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     {{template "font-decl" .}}
     <link rel="stylesheet" type="text/css" href="{{.RootPath}}/resources/base.css"/>
     <link rel="stylesheet" type="text/css" href="{{.RootPath}}/resources/lobby_create.css"/>
@@ -12,23 +17,24 @@
 </head>
 
 <body>
-    <div class="content-wrapper">
+
     <noscript><span class="noscript">{{.Translation.Get "requires-js"}}</span></noscript>
 
-    <h1>Scribble.rs</h1>
-
+    <h1 style="font-size: 12vw;">Scribble.rs</h1>
+<div class="row-full">
     <div class="tab-header">
         <label for="create-lobby-tab-button">
             <input id="create-lobby-tab-button" class="custom-check-or-radio tab-button"
                 type="radio" onclick="openTab('create-lobby')" name="tab" checked>
-            <div class="tab-label">{{.Translation.Get "create-lobby"}}</div>
+            <div class="tab-label" id="create">{{.Translation.Get "create-lobby"}}</div>
         </label>
         <label for="join-lobby-tab-button">
             <input id="join-lobby-tab-button" class="custom-check-or-radio tab-button"
                 type="radio" onclick="openTab('join-lobby')" name="tab">
-            <div class="tab-label">{{.Translation.Get "join-lobby"}}</div>
+            <div class="tab-label" id="join">{{.Translation.Get "join-lobby"}}</div>
         </label>
     </div>
+</div>
 
     <div id="create-lobby" class="tab-content">
         <div class="center-container">
@@ -96,10 +102,10 @@
 
     <div id="join-lobby" class="tab-content">
         <div class="join-lobby-data">
+            
             <div class="table-wrapper-wrapper">
-                <button id="refresh-button" onclick="loadLobbyTable()">{{.Translation.Get "refresh"}}</button>
-                <div class="table-wrapper">
-                    <table id="lobby-table">
+                
+                <table id="lobby-table">
                         <thead>
                             <tr>
                                 <th>{{.Translation.Get "word-language"}}</th>
@@ -109,11 +115,17 @@
                                 <th>{{.Translation.Get "custom-words"}}</th>
                             </tr>
                         </thead>
+
                         <tbody id="lobby-table-body">
                         </tbody>
+
                     </table>
-                </div>
+<!--                 <div class="table-wrapper">
+                    
+                </div> -->
+
             </div>
+            <button id="refresh-button" onclick="loadLobbyTable()">{{.Translation.Get "refresh"}}</button>
             <div class="lobby-details">
                 <span class="lobby-detail">{{.Translation.Get "word-language"}}:</span>
                 <span id="wordpack-detail"></span>
@@ -135,7 +147,7 @@
     </div>
 
     {{template "footer" .}}
-</div>
+
 
 <script type="text/javascript">
     let lobbyTableLoaded = false;
